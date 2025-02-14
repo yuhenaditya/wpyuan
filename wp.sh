@@ -33,11 +33,23 @@ DESTINATION=/usr/bin/docker-compose
 sudo curl -sL https://github.com/docker/compose/releases/download/${VERSION}/docker-compose-$(uname -s)-$(uname -m) -o $DESTINATION
 sudo chmod 755 $DESTINATION
 
+# Menentukan direktori home pengguna untuk menghindari masalah dengan sudo
+USER_HOME="/home/$USER"
+DIRECTORY="$USER_HOME/latihan/my_wordpress"
+
 # Membuat direktori untuk WordPress dan Docker Compose file
 echo "Membuat direktori untuk WordPress dan konfigurasi Docker Compose..."
-cd $HOME
-mkdir -p latihan/my_wordpress
-cd latihan/my_wordpress
+mkdir -p "$DIRECTORY"
+
+# Cek apakah direktori berhasil dibuat
+if [ -d "$DIRECTORY" ]; then
+  echo "Direktori $DIRECTORY berhasil dibuat."
+else
+  echo "Gagal membuat direktori $DIRECTORY. Periksa izin atau jalankan skrip sebagai pengguna biasa."
+  exit 1
+fi
+
+cd "$DIRECTORY"
 
 # Menjalankan Docker Compose untuk WordPress (gunakan file docker-compose.yml yang sudah ada)
 echo "Menjalankan Docker Compose untuk WordPress..."
