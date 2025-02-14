@@ -35,7 +35,7 @@ sudo chmod 755 $DESTINATION
 
 # Menentukan direktori home pengguna untuk menghindari masalah dengan sudo
 USER_HOME="/home/$USER"
-DIRECTORY="$USER_HOME/latihan/my_wordpress"
+DIRECTORY="$USER_HOME/wpyuan"
 
 # Membuat direktori untuk WordPress dan Docker Compose file
 echo "Membuat direktori untuk WordPress dan konfigurasi Docker Compose..."
