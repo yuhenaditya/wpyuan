@@ -28,7 +28,7 @@ sudo chmod 666 /var/run/docker.sock
 
 # Menginstal Docker Compose versi terbaru
 echo "Menginstal Docker Compose..."
-VERSION=$(curl --silent https://api.github.com/repos/docker/compose/releases/latest | jq .name -r)
-DESTINATION=/usr/bin/docker-compose
+export VERSION=2.20.2
+export DESTINATION=/usr/local/bin/docker-compose
 sudo curl -sL https://github.com/docker/compose/releases/download/${VERSION}/docker-compose-$(uname -s)-$(uname -m) -o $DESTINATION
 sudo chmod 755 $DESTINATION
